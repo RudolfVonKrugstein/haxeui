@@ -14,6 +14,9 @@ class Stack extends Component {
 	private var _selectedIndex:Int = -1;
 	#end
 	
+    // History of selected children
+    private var _history : List<Int> = new List();
+
 	//private var _transition:String = "slide";
 	
 	public function new() {
@@ -98,10 +101,23 @@ class Stack extends Component {
 				}
 			}
 			_selectedIndex = value;
+            // Remember in history
+            _history.push(value);
 			
 			var event:Event = new Event(Event.CHANGE);
 			dispatchEvent(event);
 		}
 		return value;
 	}
+
+    // Go back to the last selected index
+    public function back() {
+      var last = _history.pop();
+      if (last == null) { // If there is no back, it is the first index which is 0
+        last = 0;
+      }
+      set_selectedIndex(last);
+      // Remove the just added history
+      _history.pop();
+    }
 }
