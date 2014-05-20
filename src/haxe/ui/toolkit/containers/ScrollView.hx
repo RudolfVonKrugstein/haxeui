@@ -17,6 +17,7 @@ import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.layout.VerticalLayout;
+import haxe.ui.toolkit.core.Client;
 
 class ScrollView extends StateComponent {
 	private var _hscroll:HScroll;
