@@ -29,7 +29,7 @@ class ScrollView extends StateComponent {
 	private var _eventTarget:Sprite;
 	private var _downPos:Point;
 	#if mobile
-	private var _scrollSensitivity:Int = 0;
+	private var _scrollSensitivity:Int = Math.round(Client.instance.dpi * 0.04);
 	#elseif html5
 	private var _scrollSensitivity:Int = 1;
 	#else
