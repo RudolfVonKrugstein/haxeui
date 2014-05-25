@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.core.xml;
 
 import haxe.ui.toolkit.core.ClassManager;
+import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.interfaces.IDataComponent;
 import haxe.ui.toolkit.core.interfaces.IDisplayObject;
@@ -46,6 +47,10 @@ class UIProcessor extends XMLProcessor {
 				className = directionalClassName;
 			}
 		}
+        var text:String = node.get("text");
+        if (text != null && Toolkit.xmlTextTranslator != null) {
+          node.set("text",Toolkit.xmlTextTranslator(text));
+        }
 		if (className != null) {
 			result = createComponent(className, node);
 		}

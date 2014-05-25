@@ -3,6 +3,7 @@ package haxe.ui.toolkit.data;
 import flash.events.Event;
 import flash.events.EventDispatcher;
 import haxe.ui.toolkit.core.interfaces.IEventDispatcher;
+import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.resources.ResourceManager;
 
 class DataSource extends EventDispatcher implements IDataSource implements IEventDispatcher {
@@ -77,6 +78,9 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 	public function add(o:Dynamic):Bool {
 		var b:Bool = false;
 		if (allowAdditions) {
+            if (Toolkit.xmlTextTranslator != null && o.text != null) {
+              o.text = Toolkit.xmlTextTranslator(o.text);
+            }
 			b = _add(o);
 			if (b == true) {
 				dispatchChanged();
@@ -88,6 +92,9 @@ class DataSource extends EventDispatcher implements IDataSource implements IEven
 	public function update(o:Dynamic):Bool {
 		var b:Bool = false;
 		if (allowUpdates) {
+            if (Toolkit.xmlTextTranslator != null && o.text != null) {
+              o.text = Toolkit.xmlTextTranslator(o.text);
+            }
 			b = _update(o);
 			if (b) {
 				dispatchChanged();
