@@ -17,6 +17,7 @@ import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.layout.DefaultLayout;
 import haxe.ui.toolkit.layout.VerticalLayout;
+import haxe.ui.toolkit.core.Client;
 
 class ScrollView extends StateComponent {
 	private var _hscroll:HScroll;
@@ -29,7 +30,7 @@ class ScrollView extends StateComponent {
 	private var _eventTarget:Sprite;
 	private var _downPos:Point;
 	#if mobile
-	private var _scrollSensitivity:Int = 0;
+	private var _scrollSensitivity:Int = Math.round(Client.instance.dpi * 0.04);
 	#elseif html5
 	private var _scrollSensitivity:Int = 1;
 	#else
