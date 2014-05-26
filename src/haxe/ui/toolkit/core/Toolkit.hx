@@ -62,6 +62,11 @@ class Toolkit {
 	//******************************************************************************************
 	public static var useDefaultTheme(default, default):Bool = true;
 	public static var theme(default, default):Theme;
+
+	//******************************************************************************************
+	// Text translator for xml. All "text" attributes in xml are processed by this function.
+	//******************************************************************************************
+    public static var xmlTextTranslator(default,default):String -> String;
 	
 	//******************************************************************************************
 	// Processes a chunk of xml, return values depend on what comes in, could return IDisplayObject, IDataSource
