@@ -1,6 +1,7 @@
 package haxe.ui.toolkit.controls;
 
 import haxe.ui.toolkit.core.interfaces.IClonable;
+import haxe.ui.toolkit.core.Toolkit;
 import haxe.ui.toolkit.core.interfaces.InvalidationFlag;
 import haxe.ui.toolkit.core.StateComponent;
 import haxe.ui.toolkit.text.ITextDisplay;
@@ -69,6 +70,9 @@ class Text extends StateComponent implements IClonable<Text> {
 	}
 	
 	private override function set_text(value:String):String {
+        if (Toolkit.xmlTextTranslator != null) {
+            value = Toolkit.xmlTextTranslator(value);
+        }
 		value = super.set_text(value);
 		//_textDisplay.multiline = true;
 		_textDisplay.text = value;
