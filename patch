@@ -1,0 +1,12 @@
+diff --git a/src/haxe/ui/toolkit/controls/Button.hx b/src/haxe/ui/toolkit/controls/Button.hx
+index 6c46d64..f18d0e3 100644
+--- a/src/haxe/ui/toolkit/controls/Button.hx
++++ b/src/haxe/ui/toolkit/controls/Button.hx
+@@ -234,6 +234,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
+ 		addEventListener(MouseEvent.CLICK, _onMouseClick);
+ 		
+ 		organiseChildren();
++        style = retrieveStyle(STATE_NORMAL);
+ 	}
+ 	
+ 	private override function set_disabled(value:Bool):Bool {
