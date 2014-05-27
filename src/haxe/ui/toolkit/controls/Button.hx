@@ -234,6 +234,7 @@ class Button extends StateComponent implements IFocusable implements IClonable<S
 		addEventListener(MouseEvent.CLICK, _onMouseClick);
 		
 		organiseChildren();
+        style = retrieveStyle(STATE_NORMAL);
 	}
 	
 	private override function set_disabled(value:Bool):Bool {
