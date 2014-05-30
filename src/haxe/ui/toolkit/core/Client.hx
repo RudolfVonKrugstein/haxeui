@@ -31,9 +31,13 @@ class Client {
 	public var windowWidth(get, null):Float;
 	public var windowHeight(get, null):Float;
 	public var target(get, null):String;
-	
+
+    private static var lang_store : String = null;
 	private function get_language():String {
-		return Capabilities.language;
+        if (lang_store == null) {
+          lang_store = Capabilities.language;
+        }
+		return lang_store;
 	}
 	
 	private function get_dpi():Float {
