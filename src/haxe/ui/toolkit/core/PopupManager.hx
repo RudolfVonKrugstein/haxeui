@@ -25,6 +25,11 @@ class PopupManager {
 		return _instance;
 	}
 	
+    //******************************************************************************************
+    // List of all active popups
+    //******************************************************************************************
+    public var activePopups(default,null):List<Popup> = new List();
+
 	//******************************************************************************************
 	// Instance methods/props
 	//******************************************************************************************
@@ -133,6 +138,7 @@ class PopupManager {
 		} else {
 			p.visible = true;
 		}
+        activePopups.push(p);
 	}
 	
 	public function hidePopup(p:Popup, dispose:Bool = true):Void {
@@ -151,6 +157,7 @@ class PopupManager {
 			p.root.removeChild(p, dispose);
 			p.root.hideModalOverlay();
 		}
+        activePopups.remove(p);
 	}
 	
 	public function centerPopup(p:Popup):Void {
